@@ -4,15 +4,10 @@ from sqlite3 import Error
 
 
 def create_memory_connection():
-    conn = None
     try:
-        conn = sqlite3.connect(':memory:')
-        # conn = sqlite3.connect('C:\\sqlite\\db\\python_db.db')
-        return conn
+        return sqlite3.connect(':memory:')
     except Error as e:
         print(e)
-
-    return conn
 
 
 def list_doctors_by_speciality(conn):
@@ -102,10 +97,12 @@ def show_doctors_by_given_hospital(conn):
     hospital = input("Type a hospital name, please:")
     sql = """SELECT Doctor.Doctor_Name 
                    FROM Doctor, Hospital where 
-                   Hospital.Hospital_Name='{0}'
+                   Hospital.Hospital_Name=?
                    AND
-                   Doctor.Hospital_Id = Hospital.Hospital_Id""".format(hospital)
-    cursor.execute(sql)
+                   Doctor.Hospital_Id = Hospital.Hospital_Id"""
+    hospital_str = " "
+    hospital_str.join(hospital)
+    cursor.execute(sql, hospital_str)
     doctors = cursor.fetchall()
     for doctor in doctors:
         print(" ", doctor[0])
