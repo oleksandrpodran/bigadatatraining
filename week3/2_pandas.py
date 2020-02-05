@@ -42,9 +42,9 @@ data.sort_values(by=['price'], ignore_index=True)
 # data frame: GermanCars = {'Company': ['Ford', 'Mercedes', 'BMV', 'Audi'], 'Price': [23845, 171995, 135925 ,
 # 71400]} japaneseCars = {'Company': ['Toyota', 'Honda', 'Nissan', 'Mitsubishi '], 'Price': [29995, 23600, 61500 ,
 # 58900]}
-GermanCars = pd.DataFrame({'Company': ['Ford', 'Mercedes', 'BMV', 'Audi'], 'Price': [23845, 171995, 135925, 71400]})
+germanCars = pd.DataFrame({'Company': ['Ford', 'Mercedes', 'BMV', 'Audi'], 'Price': [23845, 171995, 135925, 71400]})
 japaneseCars = pd.DataFrame({'Company': ['Toyota', 'Honda', 'Nissan', 'Mitsubishi '], 'Price': [29995, 23600, 61500, 58900]})
-frames = [GermanCars, japaneseCars]
+frames = [germanCars, japaneseCars]
 result = pd.concat(frames, keys=['GermanCars', 'japaneseCars'])
 # print(result)
 # print(result.loc['GermanCars'])
@@ -53,7 +53,7 @@ result = pd.concat(frames, keys=['GermanCars', 'japaneseCars'])
 # Create two data frames using the following two Dicts, Merge two data frames, and append second data frame as a new
 # column to the first data frame. Car_Price = {'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'Price': [23845, 17995,
 # 135925 , 71400]} car_Horsepower = {'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'horsepower': [141, 80, 182 , 160]}
-Car_Price = pd.DataFrame({'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'Price': [23845, 17995, 135925, 71400]})
+car_Price = pd.DataFrame({'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'Price': [23845, 17995, 135925, 71400]})
 car_Horsepower = pd.DataFrame({'Company': ['Toyota', 'Honda', 'BMV', 'Audi'], 'horsepower': [141, 80, 182, 160]})
-result = pd.merge(Car_Price, car_Horsepower, how='inner', on='Company')
+result = pd.merge(car_Price, car_Horsepower, how='inner', on='Company')
 # print(result)
